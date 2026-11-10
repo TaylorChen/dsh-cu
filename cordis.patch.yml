@@ -1,0 +1,19 @@
+# dsh-cu bundle patch: three rows.
+#
+# `dsh-cu`        — host capability seam: resolves the agent-desktop binary and
+#                   provides `ctx.cu` (spawn + JSON envelope parsing). Owns the
+#                   approval gate, allowlist, audit log, and the live state the
+#                   control bar reads.
+# `dsh-cu-tool`   — the model-facing half: `cu_*` tools. Kept separate so a
+#                   deployment can run the backend without exposing tools.
+# `dsh-cu-routes` — the control-bar API (`/api/cu/*`, web-only; skipped where
+#                   webServer is absent).
+- insert:
+    - id: dsh-cu
+      name: 'dsh-cu'
+
+    - id: dsh-cu-tool
+      name: 'dsh-cu/tool'
+
+    - id: dsh-cu-routes
+      name: 'dsh-cu/routes'

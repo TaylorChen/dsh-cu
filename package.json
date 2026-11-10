@@ -1,0 +1,56 @@
+{
+  "name": "dsh-cu",
+  "version": "0.1.0",
+  "description": "Computer use for DSH: operate desktop apps through the OS accessibility tree, backed by agent-desktop (AX / UI Automation / AT-SPI).",
+  "type": "module",
+  "license": "Apache-2.0",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./tool": "./lib/tool.js",
+    "./routes": "./lib/routes.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/**",
+    "vendor/**",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "peerDependencies": {
+    "@deepseek-ai/cordis": ">=4.0.0-rc <5",
+    "@deepseek-ai/dsh-tools": ">=0.0.1-rc <2",
+    "@deepseek-ai/schemastery": "^3.18.0"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-ui-slots"
+      ],
+      "platform": "web"
+    }
+  },
+  "scripts": {
+    "build:client": "tsdown && tsc -p tsconfig.json",
+    "smoke": "node scripts/smoke.mjs",
+    "smoke:host": "node scripts/host-smoke.mjs",
+    "e2e": "node scripts/e2e.mjs"
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "computer-use",
+    "agent-desktop",
+    "accessibility",
+    "desktop-automation",
+    "mcp"
+  ]
+}

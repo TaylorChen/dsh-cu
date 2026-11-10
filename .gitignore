@@ -1,0 +1,15 @@
+# build artifacts & local state
+node_modules/
+*.tsbuildinfo
+lib/client.js.map
+
+# runtime state (never commit — contains desktop operation records)
+*.jsonl
+audit.jsonl
+
+# OS noise
+.DS_Store
+
+# design canvas server state (the canvas itself lives in ../designs/)
+.artifact-server.json
+.artifact-server.log
