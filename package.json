@@ -24,6 +24,11 @@
     "@deepseek-ai/dsh-tools": ">=0.0.1-rc <2",
     "@deepseek-ai/schemastery": "^3.18.0"
   },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "agent-desktop"
+    ]
+  },
   "dsh": {
     "bundle": {
       "patch": "./cordis.patch.yml"
@@ -52,5 +57,8 @@
     "accessibility",
     "desktop-automation",
     "mcp"
-  ]
+  ],
+  "dependencies": {
+    "agent-desktop": "^1.2.0"
+  }
 }

@@ -48,8 +48,9 @@ dsh plugin --profile web add "dsh-cu@link:<插件目录的绝对路径>"
 ```
 
 **首次使用前**：在「系统设置 → 隐私与安全性」给宿主授予**辅助功能**（必需）与
-**屏幕录制**（仅 `cu_screenshot` 需要）权限；非 macOS 平台把对应平台的
-agent-desktop 二进制放入 `vendor/`（或用 `CU_BIN` 指定），见
+**屏幕录制**（仅 `cu_screenshot` 需要）权限。引擎二进制来自 npm 依赖
+`agent-desktop`（全平台自动覆盖：macOS / Windows / Linux，x64 + arm64）；
+自编译或特殊路径可用 `CU_BIN` 指定，见
 [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md)。
 ```
 

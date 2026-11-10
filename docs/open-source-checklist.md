@@ -24,11 +24,14 @@
 - ✅ 真机测试：`scripts/e2e.mjs`（macOS 专用，需要辅助功能权限）
 - 🔲 GitHub Actions：ubuntu 跑两个 smoke（快）；e2e 需要 `macos-latest` runner + TCC 权限，建议标记为 manual 触发
 
-## 平台覆盖（诚实声明）
+## 平台覆盖
 
-- ✅ macOS arm64 二进制已随包（vendor/，校验和已验）
-- 🔲 Windows（UIA）/ Linux（AT-SPI）二进制未 vendor——README 已写「其他平台自行放入 vendor/」；上游 Releases 有对应产物
-- 🤔 或改为运行时从 npm 包 `agent-desktop` 解析（PATH 兜底已实现，见 `lib/backend.js` 的查找顺序）
+- ✅ 引擎 `agent-desktop` 已改为**正规 npm 依赖**（`dependencies.agent-desktop: ^1.2.0`），
+  其 npm 包自带全部平台二进制（macOS / Windows / Linux，x64 + arm64）与逐文件 SHA-256 ——
+  安装即全平台可用，不再需要手动 vendor
+- ✅ `pnpm.onlyBuiltDependencies` 已声明放行其 postinstall（未批准时包内 JS 启动器兜底，
+  本插件直接解析平台二进制并自设 macOS helper 环境变量，两条路都通）
+- ✅ `THIRD-PARTY-NOTICES.md` 已改写为 npm 依赖形态（tarball integrity 由 lockfile 锁定）
 
 ## 已知边界（README「已知边界」一节保持同步）
 
